@@ -58,5 +58,16 @@ public class Observable<T> {
         observers.remove(o);
     }
 
+    public ArrayList<Observer> getObservers() {
+        return observers;
+    }
 
+    public void setObservers(ArrayList<Observer> observers) {
+        this.observers = observers;
+    }
+
+    public int getObserverCount(){
+
+        return observers.size();
+    }
 }
