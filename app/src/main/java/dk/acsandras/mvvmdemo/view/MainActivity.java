@@ -8,10 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.Observable;
+import java.util.Observer;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import dk.acsandras.mvvmdemo.R;
 import dk.acsandras.mvvmdemo.viewmodel.ModelViewModel;
@@ -39,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         editText.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0)
+                if (s.length() != 0)
                     viewModel.setA(s.toString());
             }
         });
@@ -59,16 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         // TODO (11) Create the observer which updates the UI.
-        final Observer<String> stringObserver = new Observer<String>() {
+        final java.util.Observer stringObserver = new Observer() {
             @Override
-            public void onChanged(@Nullable final String a) {
-                // Update the UI, in this case, a TextView.
-                textView.setText(a);
+            public void update(Observable o, Object arg) {
+                textView.setText(arg.toString());
             }
         };
 
         // TODO (12) Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        viewModel.getA().observe(this, stringObserver);
+        viewModel.getModel().addObserver(stringObserver);
 
     }
 
