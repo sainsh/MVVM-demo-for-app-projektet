@@ -63,15 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         // TODO (11) Create the observer which updates the UI.
-        final java.util.Observer stringObserver = new Observer() {
+        final androidx.lifecycle.Observer<String> stringObserver = new androidx.lifecycle.Observer<String>() {
             @Override
-            public void update(Observable o, Object arg) {
-                textView.setText(arg.toString());
+            public void onChanged(String s) {
+                textView.setText(s);
             }
         };
 
         // TODO (12) Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        viewModel.getModel().addObserver(stringObserver);
+        viewModel.getA().observe(this,stringObserver);
 
     }
 
