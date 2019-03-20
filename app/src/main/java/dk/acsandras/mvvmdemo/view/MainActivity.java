@@ -1,18 +1,13 @@
 package dk.acsandras.mvvmdemo.view;
 
 import android.os.Bundle;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.Observable;
-import java.util.Observer;
-
-import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
@@ -63,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // TODO (11) Create the observer which updates the UI.
-        final androidx.lifecycle.Observer<String> stringObserver = new androidx.lifecycle.Observer<String>() {
+        final Observer<String> stringObserver = new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 textView.setText(s);
