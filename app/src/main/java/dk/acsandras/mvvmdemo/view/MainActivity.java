@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                                       int before, int count) {
                 if (s.length() != 0)
                     viewModel.setA(s.toString());
+                else
+                    viewModel.setA("");
             }
         });
 
