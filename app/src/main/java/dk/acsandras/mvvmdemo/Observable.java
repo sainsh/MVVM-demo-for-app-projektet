@@ -1,8 +1,9 @@
 package dk.acsandras.mvvmdemo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Observable<T> {
+public class Observable<T> implements Serializable {
 
     T value;
     boolean changed;

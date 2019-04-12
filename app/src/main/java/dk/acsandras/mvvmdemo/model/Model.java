@@ -14,12 +14,13 @@ public class Model{
 
     // TODO (3) Lav getters og setters og evt. en constructor for din data
     public Model() {
-        this.setA("Startdata fra modellen");
 
     }
 
 
     public Observable getA() {
+
+
 
         return a;
     }

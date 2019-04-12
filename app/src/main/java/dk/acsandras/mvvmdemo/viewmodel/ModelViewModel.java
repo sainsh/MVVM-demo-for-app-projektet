@@ -1,7 +1,6 @@
 package dk.acsandras.mvvmdemo.viewmodel;
 
 
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import dk.acsandras.mvvmdemo.model.Model;
@@ -16,17 +15,16 @@ public class ModelViewModel extends ViewModel implements dk.acsandras.mvvmdemo.O
 
     public ModelViewModel() {
         // TODO (5) Det her illustrerer, at vi får data fra modellen
-        currentA.setValue((String) model.getA().getValue());// Giver "Startdata fra Model"
+
         // currentA.setValue("Startdata fra ViewModel");
 
+
+        currentA.setValue((String) model.getA().getValue());// Giver "Startdata fra Model"
 
         model.getA().observe(this);
 
 
-
-
     }
-
 
 
     public MutableLiveData<String> getA() {
@@ -45,5 +43,9 @@ public class ModelViewModel extends ViewModel implements dk.acsandras.mvvmdemo.O
 
         currentA.setValue(value);
 
+    }
+
+    public Model getModel(){
+        return model;
     }
 }
